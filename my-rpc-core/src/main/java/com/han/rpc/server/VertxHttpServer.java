@@ -3,9 +3,9 @@ package com.han.rpc.server;
 
 import io.vertx.core.Vertx;
 
-public class VerxHttpServer implements HttpServer {
+public class VertxHttpServer implements HttpServer {
     public void doStart(int port) {
-        // 创建verx实例
+        // 创建vertx实例
         Vertx vertx = Vertx.vertx();
         // 创建Http服务器
         io.vertx.core.http.HttpServer server = vertx.createHttpServer();

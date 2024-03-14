@@ -21,7 +21,7 @@ public class EasyConsumerExample {
             System.out.println("user 为 null");
         }
 
-        short number = userService.getNumber();
+        int number = userService.getNumber();
         System.out.println(number);
     }
 }
