@@ -7,7 +7,7 @@ import static com.han.rpc.constant.RpcConstant.DEFAULT_CONFIG_PREFIX;
 
 
 /**
- * 服务消费者示例
+ * 服务消费者 测试
  */
 public class ConsumerExample {
     public static void main(String[] args) {
