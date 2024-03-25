@@ -1,6 +1,5 @@
 package com.han.rpc.serializer;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.han.rpc.model.RpcRequest;
 import com.han.rpc.model.RpcResponse;

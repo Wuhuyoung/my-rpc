@@ -9,6 +9,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
+        <!-- 配置中心 etcd -->
+        <dependency>
+            <groupId>io.etcd</groupId>
+            <artifactId>jetcd-core</artifactId>
+            <version>0.7.7</version>
+        </dependency>
         <!--序列化：json-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -42,12 +48,18 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.11</version>
+            <version>1.4.14</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.vertx/vertx-core -->
@@ -75,8 +87,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>11</source>
+                    <source>11</source>
                 </configuration>
             </plugin>
         </plugins>
