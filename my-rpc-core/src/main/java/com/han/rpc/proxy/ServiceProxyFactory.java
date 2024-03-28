@@ -16,9 +16,9 @@ public class ServiceProxyFactory {
      */
     public static <T> T getProxy(Class<T> serviceClass) {
         // 根据配置mock来区分创建哪种代理对象
-        if (RpcApplication.getRpcConfig().isMock()) {
-            return getMockProxy(serviceClass);
-        }
+//        if (RpcApplication.getRpcConfig().isMock()) {
+//            return getMockProxy(serviceClass);
+//        }
         return (T) Proxy.newProxyInstance(
                 serviceClass.getClassLoader(),
                 new Class[]{serviceClass},

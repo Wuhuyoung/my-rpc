@@ -1,1 +1,2 @@
 etcd=com.han.rpc.registry.EtcdRegistry
+zookeeper=com.han.rpc.registry.ZooKeeperRegistry

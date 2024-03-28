@@ -22,6 +22,6 @@ public class EasyConsumerExample {
         }
 
         int number = userService.getNumber();
-        System.out.println(number);
+        System.out.println("number 为 " + number);
     }
 }

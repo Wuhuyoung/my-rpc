@@ -5,3 +5,6 @@ rpc:
   serverPort: 8082
   mock: false
   serializer: kryo
+  registryConfig:
+    registry: etcd
+    address: http://localhost:2379
