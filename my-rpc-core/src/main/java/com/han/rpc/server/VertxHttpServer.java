@@ -10,7 +10,7 @@ public class VertxHttpServer implements HttpServer {
         // 创建Http服务器
         io.vertx.core.http.HttpServer server = vertx.createHttpServer();
 
-        // 监听端口并处理请求
+        // 处理请求
         server.requestHandler(new HttpServerHandler());
 
         // 启动服务器并监听指定端口
@@ -18,7 +18,7 @@ public class VertxHttpServer implements HttpServer {
             if (result.succeeded()) {
                 System.out.println("Server starts successfully on port " + port);
             } else {
-                System.out.println("Failed to start server: " + result.cause());
+                System.err.println("Failed to start server: " + result.cause());
             }
         });
     }

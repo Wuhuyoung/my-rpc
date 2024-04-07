@@ -8,6 +8,7 @@ import com.han.rpc.register.LocalRegister;
 import com.han.rpc.registry.Registry;
 import com.han.rpc.registry.RegistryFactory;
 import com.han.rpc.server.VertxHttpServer;
+import com.han.rpc.server.tcp.VertxTcpServer;
 
 /**
  * 服务提供者示例
@@ -34,7 +35,8 @@ public class ProviderExample {
         }
 
         // 启动服务器
-        VertxHttpServer httpServer = new VertxHttpServer();
-        httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+//        VertxHttpServer httpServer = new VertxHttpServer();
+        VertxTcpServer tcpServer = new VertxTcpServer();
+        tcpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
 }
