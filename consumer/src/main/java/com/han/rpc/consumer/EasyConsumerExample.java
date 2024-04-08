@@ -20,6 +20,12 @@ public class EasyConsumerExample {
         } else {
             System.out.println("user 为 null");
         }
+        User newUser1 = userService.getUser(user);
+        if (newUser1 != null) {
+            System.out.println("newUser1:" + newUser1.getName());
+        } else {
+            System.out.println("user1 为 null");
+        }
 
         int number = userService.getNumber();
         System.out.println("number 为 " + number);

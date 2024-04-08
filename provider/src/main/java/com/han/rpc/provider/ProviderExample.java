@@ -38,5 +38,6 @@ public class ProviderExample {
 //        VertxHttpServer httpServer = new VertxHttpServer();
         VertxTcpServer tcpServer = new VertxTcpServer();
         tcpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
+//        tcpServer.doStart(Integer.parseInt(args[0]));
     }
 }

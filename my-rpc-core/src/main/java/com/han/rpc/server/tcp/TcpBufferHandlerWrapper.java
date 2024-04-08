@@ -10,6 +10,7 @@ import io.vertx.core.parsetools.RecordParser;
  * 解决半包粘包问题
  */
 public class TcpBufferHandlerWrapper implements Handler<Buffer> {
+    // RecordParser也是一个Handler，可以保证下次读取到特定长度的字节
     private final RecordParser recordParser;
 
     public TcpBufferHandlerWrapper(Handler<Buffer> bufferHandler) {

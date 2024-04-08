@@ -1,5 +1,6 @@
 package com.han.rpc.config;
 
+import com.han.rpc.loadbalancer.LoadBalancerKeys;
 import com.han.rpc.serializer.SerializerKey;
 import lombok.Data;
 
@@ -37,6 +38,11 @@ public class RpcConfig {
      * 序列化器
      */
     private String serializer = SerializerKey.JDK;
+
+    /**
+     * 负载均衡器
+     */
+    private String loadBalancer = LoadBalancerKeys.ROUND_ROBIN;
 
     /**
      * 注册中心配置

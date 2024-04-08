@@ -10,6 +10,7 @@ import com.han.rpc.protocol.ProtocolMessage;
 import com.han.rpc.protocol.ProtocolMessageDecoder;
 import com.han.rpc.protocol.ProtocolMessageEncoder;
 import com.han.rpc.protocol.ProtocolMessageSerializerEnum;
+import com.han.rpc.protocol.ProtocolMessageStatusEnum;
 import com.han.rpc.protocol.ProtocolMessageTypeEnum;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
@@ -43,7 +44,7 @@ public class VertxTcpClient {
                     header.setVersion(ProtocolConstant.PROTOCOL_VERSION);
                     header.setSerializer((byte) ProtocolMessageSerializerEnum.getEnumByValue(RpcApplication.getRpcConfig().getSerializer()).getKey());
                     header.setType((byte) ProtocolMessageTypeEnum.REQUEST.getKey());
-//                    header.setStatus((byte) ProtocolMessageStatusEnum.OK.getValue());
+                    header.setStatus((byte) ProtocolMessageStatusEnum.OK.getValue());
                     // 生成全局请求ID
                     header.setRequestId(IdUtil.getSnowflakeNextId());
                     protocolMessage.setHeader(header);
