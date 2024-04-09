@@ -2,7 +2,7 @@ rpc:
   name: my-rpc
   version: 2.0
   serverHost: localhost
-  serverPort: 9091
+  serverPort: 9090
   mock: false
   serializer: kryo
   loadBalancer: roundRobin

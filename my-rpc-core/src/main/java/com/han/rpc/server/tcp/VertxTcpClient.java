@@ -20,6 +20,8 @@ import io.vertx.core.net.NetSocket;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 public class VertxTcpClient {
     public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws ExecutionException, InterruptedException {
@@ -73,9 +75,15 @@ public class VertxTcpClient {
                 });
 
         // 阻塞，直到完成了响应，才会继续向下执行
-        RpcResponse rpcResponse = responseFuture.get();
-        // 记得关闭连接
-        netClient.close();
+        RpcResponse rpcResponse = null;
+        try {
+            rpcResponse = responseFuture.get(5, TimeUnit.SECONDS);
+        } catch (TimeoutException e) {
+            throw new RuntimeException("执行超时");
+        } finally {
+            // 记得关闭连接
+            netClient.close();
+        }
         return rpcResponse;
     }
 

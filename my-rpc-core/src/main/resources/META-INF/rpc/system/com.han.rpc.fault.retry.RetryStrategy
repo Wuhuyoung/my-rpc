@@ -1,0 +1,2 @@
+no=com.han.rpc.fault.retry.NoRetryStrategy
+fixedInterval=com.han.rpc.fault.retry.FixedIntervalRetryStrategy

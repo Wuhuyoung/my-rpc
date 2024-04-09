@@ -4,6 +4,7 @@ rpc:
   mock: false
   serializer: kryo
   loadBalancer: roundRobin
+  retryStrategy: fixedInterval
   registryConfig:
     registry: etcd
     address: http://localhost:2379
