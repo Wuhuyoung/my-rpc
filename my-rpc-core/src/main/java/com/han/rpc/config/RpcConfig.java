@@ -1,6 +1,8 @@
 package com.han.rpc.config;
 
 import com.han.rpc.fault.retry.RetryStrategyKeys;
+import com.han.rpc.fault.tolerant.TolerantStrategy;
+import com.han.rpc.fault.tolerant.TolerantStrategyKeys;
 import com.han.rpc.loadbalancer.LoadBalancerKeys;
 import com.han.rpc.serializer.SerializerKey;
 import lombok.Data;
@@ -54,4 +56,9 @@ public class RpcConfig {
      * 注册中心配置
      */
     private RegistryConfig registryConfig;
+
+    /**
+     * 容错策略
+     */
+    private String tolerantStrategy = TolerantStrategyKeys.FAIL_FAST;
 }

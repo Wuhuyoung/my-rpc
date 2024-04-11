@@ -5,6 +5,7 @@ rpc:
   serializer: kryo
   loadBalancer: roundRobin
   retryStrategy: fixedInterval
+  tolerantStrategy: failFast
   registryConfig:
     registry: etcd
     address: http://localhost:2379

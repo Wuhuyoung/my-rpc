@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 public class VertxTcpClient {
-    public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo) throws ExecutionException, InterruptedException {
+    public static RpcResponse doRequest(RpcRequest rpcRequest, ServiceMetaInfo serviceMetaInfo, Long timeout, TimeUnit timeUnit) throws ExecutionException, InterruptedException {
         // 发送TCP请求
         Vertx vertx = Vertx.vertx();
         NetClient netClient = vertx.createNetClient();
@@ -77,7 +77,7 @@ public class VertxTcpClient {
         // 阻塞，直到完成了响应，才会继续向下执行
         RpcResponse rpcResponse = null;
         try {
-            rpcResponse = responseFuture.get(5, TimeUnit.SECONDS);
+            rpcResponse = responseFuture.get(timeout, timeUnit);
         } catch (TimeoutException e) {
             throw new RuntimeException("执行超时");
         } finally {

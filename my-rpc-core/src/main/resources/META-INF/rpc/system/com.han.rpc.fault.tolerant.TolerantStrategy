@@ -1,0 +1,4 @@
+failFast=com.han.rpc.fault.tolerant.FailFastTolerantStrategy
+failSafe=com.han.rpc.fault.tolerant.FailSafeTolerantStrategy
+failBack=com.han.rpc.fault.tolerant.FailBackTolerantStrategy
+failOver=com.han.rpc.fault.tolerant.FailOverTolerantStrategy

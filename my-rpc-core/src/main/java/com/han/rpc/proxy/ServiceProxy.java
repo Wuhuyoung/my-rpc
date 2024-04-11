@@ -9,6 +9,8 @@ import com.han.rpc.config.RpcConfig;
 import com.han.rpc.constant.RpcConstant;
 import com.han.rpc.fault.retry.RetryStrategy;
 import com.han.rpc.fault.retry.RetryStrategyFactory;
+import com.han.rpc.fault.tolerant.TolerantStrategy;
+import com.han.rpc.fault.tolerant.TolerantStrategyFactory;
 import com.han.rpc.loadbalancer.LoadBalancer;
 import com.han.rpc.loadbalancer.LoadBalancerFactory;
 import com.han.rpc.model.RpcRequest;
@@ -40,6 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 服务代理（JDK动态代理）
@@ -83,10 +86,15 @@ public class ServiceProxy implements InvocationHandler {
 
             // 4.发送TCP请求
             // 使用重试机制
-            RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
-            rpcResponse = retryStrategy.doRetry(() ->
-                    VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo));
-
+            try {
+                RetryStrategy retryStrategy = RetryStrategyFactory.getInstance(rpcConfig.getRetryStrategy());
+                rpcResponse = retryStrategy.doRetry(() ->
+                        VertxTcpClient.doRequest(rpcRequest, selectedServiceMetaInfo, 5000L, TimeUnit.MILLISECONDS));
+            } catch (Exception e) {
+                // 容错机制（重试多次仍报错时触发）
+                TolerantStrategy tolerantStrategy = TolerantStrategyFactory.getInstance(rpcConfig.getTolerantStrategy());
+                tolerantStrategy.doTolerant(null, e);
+            }
             return rpcResponse.getData();
         } catch (Exception e) {
             throw new RuntimeException("调用失败");
