@@ -1,0 +1,11 @@
+rpc:
+  name: my-rpc
+  version: 2.0
+  serverHost: localhost
+  serverPort: 9090
+  mock: false
+  serializer: kryo
+  loadBalancer: roundRobin
+  registryConfig:
+    registry: etcd
+    address: http://localhost:2379

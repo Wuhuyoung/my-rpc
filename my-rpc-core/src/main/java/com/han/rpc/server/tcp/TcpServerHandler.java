@@ -7,7 +7,7 @@ import com.han.rpc.protocol.ProtocolMessage;
 import com.han.rpc.protocol.ProtocolMessageDecoder;
 import com.han.rpc.protocol.ProtocolMessageEncoder;
 import com.han.rpc.protocol.ProtocolMessageTypeEnum;
-import com.han.rpc.register.LocalRegister;
+import com.han.rpc.register.LocalRegistry;
 import io.vertx.core.Handler;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.net.NetSocket;
@@ -44,7 +44,7 @@ public class TcpServerHandler implements Handler<NetSocket> {
             RpcResponse rpcResponse = new RpcResponse();
             try {
                 // 反射调用服务方法
-                Class<?> implClass = LocalRegister.get(rpcRequest.getServiceName());
+                Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
                 Method method = implClass.getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
                 Object result = method.invoke(implClass.newInstance(), rpcRequest.getArgs());
                 // 封装返回结果

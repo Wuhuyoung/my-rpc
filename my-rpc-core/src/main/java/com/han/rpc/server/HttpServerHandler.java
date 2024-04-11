@@ -3,8 +3,7 @@ package com.han.rpc.server;
 import com.han.rpc.RpcApplication;
 import com.han.rpc.model.RpcRequest;
 import com.han.rpc.model.RpcResponse;
-import com.han.rpc.register.LocalRegister;
-import com.han.rpc.serializer.JdkSerializer;
+import com.han.rpc.register.LocalRegistry;
 import com.han.rpc.serializer.Serializer;
 import com.han.rpc.serializer.SerializerFactory;
 import io.vertx.core.Handler;
@@ -48,7 +47,7 @@ public class HttpServerHandler implements Handler<HttpServerRequest> {
             }
             try {
                 // 3.通过服务注册器得到对应实现类
-                Class<?> implClass = LocalRegister.get(rpcRequest.getServiceName());
+                Class<?> implClass = LocalRegistry.get(rpcRequest.getServiceName());
                 // 4.反射调用
                 Method method = implClass.getMethod(rpcRequest.getMethodName(), rpcRequest.getParameterTypes());
                 Object result = method.invoke(implClass.newInstance(), rpcRequest.getArgs());

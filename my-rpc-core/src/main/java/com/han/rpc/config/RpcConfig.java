@@ -1,7 +1,6 @@
 package com.han.rpc.config;
 
 import com.han.rpc.fault.retry.RetryStrategyKeys;
-import com.han.rpc.fault.tolerant.TolerantStrategy;
 import com.han.rpc.fault.tolerant.TolerantStrategyKeys;
 import com.han.rpc.loadbalancer.LoadBalancerKeys;
 import com.han.rpc.serializer.SerializerKey;

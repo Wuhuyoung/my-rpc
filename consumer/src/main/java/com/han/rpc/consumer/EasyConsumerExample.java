@@ -1,5 +1,6 @@
 package com.han.rpc.consumer;
 
+import com.han.rpc.bootstrap.ConsumerBootstrap;
 import com.han.rpc.common.model.User;
 import com.han.rpc.common.service.UserService;
 import com.han.rpc.proxy.ServiceProxyFactory;
@@ -9,6 +10,9 @@ import com.han.rpc.proxy.ServiceProxyFactory;
  */
 public class EasyConsumerExample {
     public static void main(String[] args) {
+        // 服务消费者初始化
+        ConsumerBootstrap.init();
+
         // 需要获取userService的代理对象
         UserService userService = ServiceProxyFactory.getProxy(UserService.class);
         User user = new User();
